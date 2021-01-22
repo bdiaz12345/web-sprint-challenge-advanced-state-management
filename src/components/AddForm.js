@@ -66,7 +66,6 @@ class AddForm extends React.Component {
 
 
     render() {
-        console.log(this.props)
         return(<section>
             <h2>Add Smurf</h2>
             <form>
