@@ -2,7 +2,7 @@ import React from 'react';
 
 class Smurf extends React.Component {
     render() {
-        const { smurf } = this.props.smurfs;
+        const { smurf } = this.props;
         console.log(smurf)
 
         return(<div data-testid="smurf" className="card">

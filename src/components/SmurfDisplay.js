@@ -6,15 +6,15 @@ import Smurf from './Smurf'
 export class SmurfDisplay extends React.Component {
     componentDidMount () {
         this.props.getSmurfs()
-        console.log(this.props)
+        console.log(this.props.smurfs)
     }
 
     
     render() {
-        console.log(this.props)
+        console.log(this.props.smurfs)
         return(<div>
             {this.props.loading === true ? <div>...Loading Smurfs!</div> : this.props.smurfs.map((smurf) => {
-                return (<Smurf props={smurf} />)
+                return (<Smurf smurf={smurf} />)
             })}
         </div>)
     }

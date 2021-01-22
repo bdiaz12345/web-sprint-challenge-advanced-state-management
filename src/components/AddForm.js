@@ -7,7 +7,7 @@ class AddForm extends React.Component {
     constructor () {
         super ()
         this.state = {
-            id: '',
+            id: Date.now(),
             name: '',
             position: '',
             nickname: '',
@@ -49,22 +49,20 @@ class AddForm extends React.Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault()
         console.log(this.state)
-        postSmurf(this.state)
+        event.preventDefault()
+        this.props.postSmurf(this.state)
         this.setState({
-            id: '',
+            id: Date.now(),
             name: '',
             position: '',
             nickname: '',
             description: ''
         })
-
     }
 
 
     render() {
-        console.log(this.props)
         return(<section>
             <h2>Add Smurf</h2>
             <form>
