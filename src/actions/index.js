@@ -27,6 +27,9 @@ export const postSmurf = (smurf) => dispatch => {
         .catch(err => dispatch({ type: ERROR, payload: err }))
 }
 
+export const errorText = () => dispatch => {
+    dispatch({ type: ERROR })
+}
 //Task List:
 //1. Add fetch smurfs action: 
 //              - fetch and return initial list of smurfs

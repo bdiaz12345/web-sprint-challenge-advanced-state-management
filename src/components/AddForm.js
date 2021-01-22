@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { postSmurf } from '../actions/index'
+import { postSmurf, errorText } from '../actions/index'
 
 class AddForm extends React.Component {
 
@@ -52,6 +52,9 @@ class AddForm extends React.Component {
         console.log(this.state)
         event.preventDefault()
         this.props.postSmurf(this.state)
+        if (this.props.error !== '') {
+            errorText()
+        }
         this.setState({
             id: Date.now(),
             name: '',
@@ -63,6 +66,7 @@ class AddForm extends React.Component {
 
 
     render() {
+        console.log(this.props)
         return(<section>
             <h2>Add Smurf</h2>
             <form>
@@ -77,7 +81,7 @@ class AddForm extends React.Component {
                     <input onChange={this.handleChangeDescription} name='description' id='description' />
                 </div>
 
-                {this.props.error ?  <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div> : ''}
+                {this.props.error ?  <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {this.props.error.response.data.Error}</div> : ''}
                 <button onClick={this.handleSubmit}>Submit Smurf</button>
             </form>
         </section>);
@@ -90,7 +94,7 @@ const mapStateToProps = state => ({
     error: state.error
 })
 
-export default connect(mapStateToProps, { postSmurf })(AddForm);
+export default connect(mapStateToProps, { postSmurf, errorText })(AddForm);
 
 //Task List:
 //1. Add in all necessary import components and library methods.
